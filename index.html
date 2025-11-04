@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversor de Código</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div class="bg-orbes"></div>
+
+  <header class="topo">
+    <div class="logo">
+      <span class="marca">Converte<span>Código</span></span>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <section class="painel">
+      <div class="cabecalho-painel">
+        <div class="selects">
+          <label class="campo">
+            <span>Origem</span>
+            <select id="daLinguagem">
+              <option>JavaScript</option>
+              <option>Python</option>
+              <option>PHP</option>
+              <option>Java</option>
+              <option>TypeScript</option>
+              <option>CSS</option>
+              <option>SCSS</option>
+            </select>
+          </label>
+          <button id="trocarBtn" class="btn swap">
+            <span class="seta seta-a"></span>
+            <span class="seta seta-b"></span>
+          </button>
+          <label class="campo">
+            <span>Destino</span>
+            <select id="praLinguagem">
+              <option>Python</option>
+              <option>JavaScript</option>
+              <option>PHP</option>
+              <option>Java</option>
+              <option>TypeScript</option>
+              <option>CSS</option>
+              <option>SCSS</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="opcoes">
+          <button id="converterBtn" class="btn primario pulse">Converter</button>
+        </div>
+      </div>
+
+      <div class="editores">
+        <div class="editor bloco vidro">
+          <div class="editor-top">
+            <span class="editor-titulo">Entrada</span>
+            <div class="grupo-botoes">
+              <button id="colarBtn" class="btn pequeno">Colar</button>
+              <button id="copiarEntradaBtn" class="btn pequeno">Copiar</button>
+              <button id="limparEntradaBtn" class="btn pequeno">Limpar</button>
+            </div>
+          </div>
+          <textarea id="inputCode" spellcheck="false" placeholder="Cole seu código aqui..."></textarea>
+        </div>
+
+        <div class="editor bloco vidro">
+          <div class="editor-top">
+            <span class="editor-titulo">Convertido</span>
+            <div class="grupo-botoes">
+              <button id="copiarSaidaBtn" class="btn pequeno">Copiar</button>
+              <button id="limparSaidaBtn" class="btn pequeno">Limpar</button>
+            </div>
+          </div>
+          <textarea id="outputCode" spellcheck="false" placeholder="O resultado aparecerá aqui..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="alerta vidro">
+        <span class="ponto"></span>
+        <p>Nota: Algumas linguagens podem ter diferenças e limitações na conversão automática. Sempre revise o código traduzido para garantir que todas as funcionalidades foram preservadas corretamente.</p>
+      </div>
+
+      <div id="toast" class="toast"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker registrado!"))
+        .catch(err => console.error("Erro no Service Worker:", err));
+    }
+  </script>
+</body>
+</html>
